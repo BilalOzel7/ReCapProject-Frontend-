@@ -1,0 +1,22 @@
+<h3>Rentals</h3>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Marka</th>
+      <th>Müşteri</th>
+      <th>Araba</th>
+      <th>Kiralama Başlangıç</th>
+      <th>Kiralama Bitiş</th>
+      
+
+    </tr>
+  </thead>
+  <tr *ngFor="let rental of rentals">
+    <td>{{rental.rentalId}}</td>
+    <td>{{rental.customerId}}</td>
+    <td>{{rental.carId}}</td>
+    <td>{{rental.rentDate}}</td>
+    <td>{{rental.returnDate}}</td>
+    
+  </tr>
+</table>
