@@ -1,25 +1,96 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+<!-- <div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
-<h3>Cars</h3>
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Araba Adı</th>
-      <th>Marka</th>
-      <th>Renk</th>
-      <th>Günlük fiyat</th>
-      <th>Model</th>
+<div class="mb-3">
+  <label for="filterText" class="form-label"></label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Araç Ara...">
+</div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+  {{filterText}} aranıyor...
+</div>
+<div>
+  <div class="row my-3">
+    <div class="col md-3">
+<select  class="form-select" >
+  <option selected>Marka Seçiniz</option>
+  <option value="1" *ngFor="let brand of brands">{{brand.brandname}}</option>
+</select></div>
+<div class="col md-3">
+<select  class="form-select" >
+  <option selected>Renk Seçiniz</option>
+  <option value="1" *ngFor="let color of colors">{{color.colorName}}</option>
+</select>
+</div>
+<div class="col-lg">
+<div class="d-grid">
+<button class="btn btn-success" type="button">Filtrele</button>
+</div>
+</div>
+</div></div>
+<tr>
+  <h1>Araçlarımız</h1>
+</tr>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+<div (click)="SetCurrentCarDetail(car)" 
+routerLink="cars/cardetails/{{car.carId}}" *ngFor="let car of cars |filterPipe:filterText"  class="card" style="width: fullwidth;">
+<div   style="width: fullwidth;">
+  <img  src="{{imageURL}}{{car.imagePath}}" class="card-img-top" alt="..."></div>
+  <div class="card-body" >
+    <h4 class="card-title">{{car.brandname}} {{car.description}}</h4>
+    <p class="card-text">RentalCars ayrıcalığı ile kiralayın!</p>
+    <div class="card-body">
+        <div class="row">
+             <div class="col-sm-3"> 
+                <h4 class="card-title " style="text-align: center;">Marka</h4>
+                <p class="card-text"  style="text-align: center;" >{{car.brandname |uppercase}}</p>
+            </div>  
+            <div class="col-sm-3">
+              <h4 class="card-title" style="text-align: center;">Model Yılı</h4>
+              <p class="card-text"  style="text-align: center;" >{{car.modelYear}}</p>
+          </div> 
+            <div class="col-sm-3">
+              <h4 class="card-title" style="text-align: center;">Araç Rengi</h4>
+              <p class="card-text"  style="text-align: center;" > {{car.colorName}}</p>
+          </div> 
+            <div class="col-sm-3">
+                <h4 class="card-title " style="text-align: center;">Günlük Fiyat</h4>
+                <p class="card-text"  style="text-align: center;" >{{car.dailyPrice |currency:"₺"}} </p>
+            </div>
+            <div class="col-sm-3">
+              <h4 class="card-title " style="text-align: center;">KDV'li Fiyat </h4>
+              <p class="card-text"  style="text-align: center;" >{{car.dailyPrice |vatAdded:18|currency:"₺"}} </p>
+            </div>
+        </div>
+  </div>
+</div>
+<div class="d-grid gap-5">
+    <button class="btn btn-success" type="button">İncele</button>
+</div>
+</div> -->
 
+ <div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>CarName</th>
+        <th>ColorName</th>
+        <th>BrandName</th>
+        <th>ModelYear</th>
+        <th>DailyPrice</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tr (click)="SetCurrentCarDetail(car)" 
+    routerLink="/cars/cardetails/{{car.carId}}" 
+    *ngFor="let car of cars">
+      <td>{{car.carId}}</td>
+      <td>{{car.carName}}</td>
+      <td>{{car.colorId}}</td>
+      <td>{{car.brandId}}</td>
+      <td>{{car.modelYear}}</td>
+      <td>{{car.dailyPrice}}</td>
+      <td>{{car.description}}</td>
     </tr>
-  </thead>
-  <tr *ngFor="let car of cars">
-    <td>{{car.carId}}</td>
-    <td>{{car.carName}}</td>
-    <td>{{car.brandId}}</td>
-    <td>{{car.colorId}}</td>
-    <td>{{car.dailyPrice}}</td>
-    <td>{{car.modelYear}}</td>
-  </tr>
-</table>
+  </table>
+</div> 

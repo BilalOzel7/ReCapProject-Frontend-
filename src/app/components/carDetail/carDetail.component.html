@@ -1,20 +1,77 @@
-<h3>Cars Detail</h3>
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      
-      <th>Araba Adı</th>
-      <th>Marka</th>
-      <th>Renk</th>
-      <th>Günlük fiyat</th>
-      
+<!-- <tr *ngFor="let car of cars">
+  <div  *ngFor="let carImage of carImages" class="card" style="width: fullwidth;">
+    <img src="{{imageURL}}{{carImage.imagePath}}" class="card-img-top" alt="...">
+    <div class="card-body" >
+      <h5 class="card-title">{{car.brandname}} {{car.carName}}</h5>
+      <p class="card-text">RentalCars ayrıcalığı ile kiralayın!</p>
+      <div class="card-body">
+          <div class="row">
+              <div class="col-sm-2">
+                  <h4 class="card-title " style="text-align: center;">Marka</h4>
+                  <p class="card-text"  style="text-align: center;" >{{car.brandname}} </p>
+              </div>
+              <div class="col-sm-2">
+                  <h4 class="card-title" style="text-align: center;">Model</h4>
+                  <p class="card-text"  style="text-align: center;" > {{car.description}}</p>
+              </div>
+              <div class="col-sm-2">
+                  <h4 class="card-title" style="text-align: center;">Araç Rengi</h4>
+                  <p class="card-text"  style="text-align: center;" > {{car.colorName}}</p>
+              </div>
+              <div class="col-sm-2">
+                  <h4 class="card-title" style="text-align: center;">Model Yılı</h4>
+                  <p class="card-text"  style="text-align: center;" >{{car.modelYear}}</p>
+              </div>
+              <div class="col-sm-2">
+                  <h4 class="card-title " style="text-align: center;">Günlük Fiyat</h4>
+                  <p class="card-text"  style="text-align: center;" >{{car.dailyPrice |currency:"₺"}} </p>
+              </div>
+              <div class="col-sm-2">
+                <h4 class="card-title " style="text-align: center;">KDV'li Fiyat </h4>
+                <p class="card-text"  style="text-align: center;" >{{car.dailyPrice |vatAdded:18|currency:"₺"}} </p>
+              </div>
+          </div>
+    </div>
+  </div>
+  <div class="d-grid gap-2">
+      <button (click)="addToCart(car)" class="btn btn-success" type="button">Kirala</button>
+  </div>
+  </div>
+  </tr> -->
 
-    </tr>
-  </thead>
-  <tr *ngFor="let carDetail of carDetails">
-    <td>{{carDetail.carName}}</td>
-    <td>{{carDetail.brandName}}</td>
-    <td>{{carDetail.colorName}}</td>
-    <td>{{carDetail.dailyPrice}}</td>
-  </tr>
-</table>
+  <div class="card" style="text-align: center;">
+    <p class="card-text">RentalCars ayrıcalığı ile kiralayın!</p>
+     <div  *ngFor="let carImage of carImages" class="card" style="width: fullwidth;">
+            <img src="{{imageURL}}{{carImage.imagePath}}" class="card-img-top" alt="..."><div>
+      <tr *ngFor="let car of carDetails">
+        
+      <div class="row">
+        <div class="col-sm-2">
+            <h4 class="card-title " style="text-align: center;">Marka</h4>
+            <p class="card-text"  style="text-align: center;" >{{car.carName}} </p>
+        </div>
+        <div class="col-sm-2">
+            <h4 class="card-title" style="text-align: center;">Model</h4>
+            <p class="card-text"  style="text-align: center;" >{{car.brandName}}</p>
+        </div>
+        <div class="col-sm-2">
+            <h4 class="card-title" style="text-align: center;">Araç Rengi</h4>
+            <p class="card-text"  style="text-align: center;" > {{car.colorName}}</p>
+        </div>
+        <div class="col-sm-2">
+            <h4 class="card-title" style="text-align: center;">Model Yılı</h4>
+            <p class="card-text"  style="text-align: center;" >{{car.modelYear}}</p>
+        </div>
+        <div class="col-sm-2">
+            <h4 class="card-title " style="text-align: center;">Günlük Fiyat</h4>
+            <p class="card-text"  style="text-align: center;" >{{car.dailyPrice}}</p>
+        </div>
+    </div>
+   
+<!-- <div class="d-grid gap-2">
+            <button (click)="addToCart(car)" class="btn btn-success" type="button">Kirala</button>
+        </div> -->
+        </tr>
+    
+  </div> 
+  

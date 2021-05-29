@@ -1,14 +1,14 @@
-<h3>Colors</h3>
-<table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Araba rengi</th>
-      </tr>
-    </thead>
-    <tr *ngFor="let color of colors">
-      <td>{{color.colorId}}</td>
-      <td>{{color.colorName}}</td>
-     
-    </tr>
-  </table>
+<!-- <div class="mb-3">
+  <label for="filterColorText" class="form-label"></label>
+  <input type="text" [(ngModel)]="filterColorText" class="form-control" id="filterColorText" placeholder="Renklerde Ara...">
+</div> -->
+
+  <ul class="list-group">
+    <li [class]="getAllColorClass()" routerLink="/car" (click)="removeCurrentColor()">Tüm Renkler</li>
+    <li (click)="setCurrentColor(color)"
+    routerLink="car/colors/{{color.colorId}}"
+    *ngFor="let color of colors |filterColor:filterColorText" 
+    [class]="getCurrentColorClass(color)" >{{color.colorName}}</li>
+  </ul>
+
+  <h5 *ngIf="currentColor">{{currentColor.colorName}} seçtiniz</h5>

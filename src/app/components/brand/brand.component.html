@@ -1,14 +1,13 @@
 
+
 <h3>Brands</h3>
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Marka</th>
-    </tr>
-  </thead>
-  <tr *ngFor="let brand of brands">
-    <td>{{brand.brandId}}</td>
-   <td>{{brand.brandName}}</td>
-  </tr>
-</table>
+<ul class="list-group">
+  <li [class]="getAllBrandClass()" routerLink="/cars" >All Cars</li>
+  <li [class]="getCurrentBrandClass(brand)" *ngFor="let brand of brands" 
+   (click)="setCurrentBrand(brand)" 
+   routerLink="cars/brand/{{brand.brandId}}"> 
+  {{brand.brandname}}</li>
+</ul>
+ 
+<h5 *ngIf="currentBrand">{{currentBrand.brandname}} seçtiniz</h5>  
+
