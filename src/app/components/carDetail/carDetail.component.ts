@@ -4,10 +4,13 @@ import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carImage';
+import { Rental } from 'src/app/models/rental';
 import { CarService } from 'src/app/services/car.service';
 import { CarDetailService } from 'src/app/services/carDetail.service';
 import { CarImageService } from 'src/app/services/carImage.service';
 import { CartService } from 'src/app/services/cart.service';
+import { CreditCardService } from 'src/app/services/creditCard.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-carDetail',
@@ -17,15 +20,17 @@ import { CartService } from 'src/app/services/cart.service';
 export class CarDetailComponent implements OnInit {
   cars: Car[] = [];
   carId: number;
-  carDetails: CarDetail[];
+  carDetails: CarDetail[]
+  rentals:Rental;
   carImages: CarImage[] = [];
   imageURL: string = "https://localhost:44303"
   constructor(private carService: CarService, private activatedRoute: ActivatedRoute, private carImageService: CarImageService, private toastrService:ToastrService
-    , private cartService:CartService,private carDetailService:CarDetailService) { }
+    , private cartService:CartService,private carDetailService:CarDetailService,private rentalService:RentalService) { }
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
       this.getCarDetailsById(params['carId']);
       this.getByCarId(params['carId'])
+      this.addRentals(params['Rental'])
     })
   }
   getByCarId(carId: number) {
@@ -39,7 +44,7 @@ export class CarDetailComponent implements OnInit {
     
     this.carDetailService.getCarDetailsById(carId).subscribe((response) => {
       this.carDetails = response.data;
-      console.log(response.data);
+      
     });
   }
   getCarDetails(carId:number) {
@@ -56,8 +61,12 @@ export class CarDetailComponent implements OnInit {
      
     })
   }
-  addToCart(car: Car) {
+  addToCart(car: CarDetail) {
     this.toastrService.success("Sepete eklendi.",car.carName)
     this.cartService.addToCart(car);
   }
+addRentals(rent:Rental){
+    this.rentalService.addRentals(rent);
+}
+
 }

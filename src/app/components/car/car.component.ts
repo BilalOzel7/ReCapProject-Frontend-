@@ -11,6 +11,9 @@ import { CarImage } from 'src/app/models/carImage';
 import { Brand } from 'src/app/models/brand';
 import { Color } from 'src/app/models/color';
 import { CarDetail } from 'src/app/models/carDetail';
+import { CartService } from 'src/app/services/cart.service';
+import { CreditCardService } from 'src/app/services/creditCard.service';
+
 
 @Component({
   selector: 'app-car',
@@ -21,16 +24,20 @@ export class CarComponent implements OnInit {
 cars: Car[] = [];
 currentCar:Car;
 filterText="";
+brandFilter="";
 carId: number;
+carDetails: CarDetail[]=[];
 carImages:CarImage[]=[];
 dataLoaded=false;
-imageURL:string="https://localhost:44303/api/";
+imageURL:string="https://localhost:44303";
 brands:Brand[]=[];
 colors:Color[]=[];
    constructor(private carService: CarService,
     private activatedRoute: ActivatedRoute,
     private toastrService:ToastrService,private carImagesService : CarImageService,
-     private brandService:BrandService,private colorService:ColorService) { } 
+     private brandService:BrandService,private colorService:ColorService,private cartService:CartService,
+     private creditCardService:CreditCardService,
+     ) { } 
 
   ngOnInit(): void {
   
@@ -43,6 +50,8 @@ colors:Color[]=[];
     //}
     else if (params["carId"]){
     this.getCarsDetails(params["carId"])}
+    else if (params["carId"]){
+      this.getImagesByCarId(params["carId"])}
      else {
       this.getCars();
      }
@@ -112,5 +121,9 @@ colors:Color[]=[];
         this.dataLoaded=true;
       });
     }
-  
+    addToCart(car: CarDetail) {
+      this.toastrService.success("Sepete eklendi.",car.carName)
+      this.cartService.addToCart(car);
+    }
+
   }

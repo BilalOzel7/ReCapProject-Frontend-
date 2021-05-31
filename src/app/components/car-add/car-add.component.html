@@ -1,0 +1,63 @@
+<div class="content">
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header"><h5 class="card-title">Araba Ekle</h5></div>
+    <div class="card-body">
+      <form [formGroup]="carAddForm">
+  <div class="mb-3">
+  <label style=" font-size: 20px">Car Name</label>
+    <div class="form-group">
+       <input type="text" id="carName" formControlName="carName" 
+       class="form-control" placeholder="Car Name"/>
+    </div>
+   </div>
+    <div class="mb-3">
+    <label style=" font-size: 20px">Brand</label>
+    <div class="form-group">
+     <input type="number" id="brandId" formControlName="brandId" 
+     class="form-control" placeholder="Brand"/>
+  </div>
+  </div>
+  <div class="mb-3">
+  <label style=" font-size: 20px">Color</label>
+  <div class="form-group">
+ <input type="number" id="colorId" formControlName="colorId" 
+ class="form-control" placeholder="Color"/>
+ </div>
+ </div>
+ <div class="mb-3">
+ <label style=" font-size: 20px">DailyPrice</label>
+  <div class="form-group">
+   <input type="number" id="dailyPrice" formControlName="dailyPrice" 
+   class="form-control" placeholder="DailyPrice"/>
+</div>
+ </div>
+<div class="mb-3">
+<label style=" font-size: 20px">ModelYear</label>
+<div class="form-group">
+<input type="number" id="modelYear" formControlName="modelYear" 
+class="form-control" placeholder="Model Year"/>
+</div>
+</div>
+<div class="mb-3">
+  <label style=" font-size: 20px">Description</label>
+    <div class="form-group">
+       <input type="text" id="description" formControlName="description" 
+       class="form-control" placeholder="Description"/>
+    </div>
+   </div>
+</form>
+    </div>
+    <div class="card-footer">
+  <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+</div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
