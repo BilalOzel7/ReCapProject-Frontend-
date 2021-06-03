@@ -1,13 +1,13 @@
 
 
-<h3>Brands</h3>
+<h3>Markalar</h3>
 <ul class="list-group">
-  <li [class]="getAllBrandClass()" routerLink="/cars" >All Cars</li>
-  <li [class]="getCurrentBrandClass(brand)" *ngFor="let brand of brands" 
-   (click)="setCurrentBrand(brand)" 
+ 
+  <li [class]="getCurrentBrandClass(brand)" *ngFor="let brand of carDetails" 
+    (click)="setCurrentBrand(brand)"
    routerLink="cars/brand/{{brand.brandId}}"> 
-  {{brand.brandname}}</li>
+  {{brand.brandName}}</li>
 </ul>
  
-<h5 *ngIf="currentBrand">{{currentBrand.brandname}} seçtiniz</h5>  
+<h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz</h5>  
 

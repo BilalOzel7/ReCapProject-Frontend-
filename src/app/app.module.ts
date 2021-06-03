@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import{FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
@@ -17,11 +17,20 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 import {ToastrModule} from "ngx-toastr";
+import { JwtModule } from '@auth0/angular-jwt';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { FilterColorPipe } from './pipes/filter-color.pipe';
 import { FilterBrandPipe } from './pipes/filter-brand.pipe'
 import { CreditCardComponent } from './components/creditCard/creditCard.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/register/register.component';
+import { RentalAddComponent } from './components/rental/rental-add/rental-add.component';
+import { PaymentComponent } from './components/payment/payment.component';
+
+
 
 @NgModule({
   declarations: [
@@ -39,7 +48,14 @@ import { CarAddComponent } from './components/car-add/car-add.component';
     FilterColorPipe ,
     FilterBrandPipe,
     CreditCardComponent,
-    CarAddComponent
+    CarAddComponent,
+    LoginComponent,
+    HomeComponent,
+    RegisterComponent,
+    RentalAddComponent,
+    PaymentComponent,
+    
+    
    
   ],
   imports: [
@@ -49,11 +65,16 @@ import { CarAddComponent } from './components/car-add/car-add.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    JwtModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
-    })
+    }),
+ 
+    
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

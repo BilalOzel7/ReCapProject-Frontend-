@@ -1,171 +1,60 @@
-<!-- <div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div class="mb-3">
-  <label for="filterText" class="form-label"></label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Araç Ara...">
-</div>
-<div *ngIf="filterText.length>2" class="alert alert-success">
-  {{filterText}} aranıyor...
-</div>
-<div>
-  <div class="row my-3">
-    <div class="col md-3">
-<select  class="form-select" >
-  <option selected>Marka Seçiniz</option>
-  <option value="1" *ngFor="let brand of brands">{{brand.brandname}}</option>
-</select></div>
-<div class="col md-3">
-<select  class="form-select" >
-  <option selected>Renk Seçiniz</option>
-  <option value="1" *ngFor="let color of colors">{{color.colorName}}</option>
-</select>
-</div>
-<div class="col-lg">
-<div class="d-grid">
-<button class="btn btn-success" type="button">Filtrele</button>
-</div>
+
+
+
+  <div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <app-brand [brand]="brand"></app-brand>
+    </div>
+    
+<div class="col-md-10">
+  <div  class="mb-4">
+    <label for="filterText" class="form-label" style="text-align: center; font-size: 24px">Araç Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filter-text" placeholder="Arama ifadesi giriniz..">
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-2">
+  <div *ngIf="filterText.length>2" class="alert alert-success">
+    {{filterText}} aradınız
+  </div>
+  <div class="col" style="margin-top:50px;" *ngFor="let car of carDetails |filterPipe:filterText">
+    <div class="row"> 
+        <div class="col-md-9" >
+            <div class="card-sl">
+                <div class="card-image" >
+                    <img
+                        src="{{imageURL}}{{car.carImage[0].imagePath}}" />
+                </div>
+
+                
+                <div class="card-heading">
+                  {{car.carName}}
+                </div>
+                <div class="card-text">
+                 Benzinli ve otomatik vites Honda Civic Sedan    
+                </div>
+                <div class="card-text">
+                  {{car.dailyPrice}} TL
+                </div>
+                <div >
+                <a  href="#" class="card-button" 
+                routerLink="/cars/cardetails/{{ car.carId }}">Detaylar</a></div>
+            </div>
+        </div>
+        
+           <!-- <div >
+            <a  href="#" class="card-button" (click)="SetCurrentCarDetail(car)"
+            routerLink="/cars/cardetails/{{ car.carId }}">Detaylar</a></div> -->
+        
+
+    </div>  
+  </div>
 </div>
 </div></div>
-<tr>
-  <h1>Araçlarımız</h1>
-</tr>
-<div class="row row-cols-1 row-cols-md-2 g-4">
-<div (click)="SetCurrentCarDetail(car)" 
-routerLink="cars/cardetails/{{car.carId}}" *ngFor="let car of cars |filterPipe:filterText"  class="card" style="width: fullwidth;">
-<div   style="width: fullwidth;">
-  <img  src="{{imageURL}}{{car.imagePath}}" class="card-img-top" alt="..."></div>
-  <div class="card-body" >
-    <h4 class="card-title">{{car.brandname}} {{car.description}}</h4>
-    <p class="card-text">RentalCars ayrıcalığı ile kiralayın!</p>
-    <div class="card-body">
-        <div class="row">
-             <div class="col-sm-3"> 
-                <h4 class="card-title " style="text-align: center;">Marka</h4>
-                <p class="card-text"  style="text-align: center;" >{{car.brandname |uppercase}}</p>
-            </div>  
-            <div class="col-sm-3">
-              <h4 class="card-title" style="text-align: center;">Model Yılı</h4>
-              <p class="card-text"  style="text-align: center;" >{{car.modelYear}}</p>
-          </div> 
-            <div class="col-sm-3">
-              <h4 class="card-title" style="text-align: center;">Araç Rengi</h4>
-              <p class="card-text"  style="text-align: center;" > {{car.colorName}}</p>
-          </div> 
-            <div class="col-sm-3">
-                <h4 class="card-title " style="text-align: center;">Günlük Fiyat</h4>
-                <p class="card-text"  style="text-align: center;" >{{car.dailyPrice |currency:"₺"}} </p>
-            </div>
-            <div class="col-sm-3">
-              <h4 class="card-title " style="text-align: center;">KDV'li Fiyat </h4>
-              <p class="card-text"  style="text-align: center;" >{{car.dailyPrice |vatAdded:18|currency:"₺"}} </p>
-            </div>
-        </div>
+  <!-- <div class="row">
+  <div class="col-md-3">
+    <app-brand></app-brand>
   </div>
-</div>
-<div class="d-grid gap-5">
-    <button class="btn btn-success" type="button">İncele</button>
-</div>
-</div> -->
-
-<!-- <div class="row" style="margin-top: 50px"> -->
-  <!-- Filter section end-->
-  <!-- <div class="col-md-12">
-    <div class="row">
-      <div class="col-md-3" *ngFor="let car of cars | filterPipe: filterText">
-        <div class="card mb-4 shadow-sm" *ngFor="let carImage of carImages">
-          <img
-            class="bd-placeholder-img card-img-top"
-            width="100%"
-            height="225"
-            src="{{imageURL}}{{carImage.imagePath}}"
-            role="img"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          />
-
-          <div class="card-body">
-            <p
-              class="card-text"
-              style="font-weight: 600; border-bottom: 1px solid black"
-            >
-              {{ car.carName }}
-            </p>
-            <p class="card-text" style="font-size: 13px">
-              Brand Name: {{ car.brandname }}
-            </p>
-            <p class="card-text" style="font-size: 13px">
-              Color Name: {{ car.colorName }}
-            </p>
-            <p class="card-text" style="font-size: 13px">
-              Model Year: {{ car.modelYear }}
-            </p>
-            <p class="card-text" style="font-size: 13px">
-              daliy Price: {{ car.dailyPrice | currency }}
-            </p>
-
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-sm btn-primary"
-                  (click)="SetCurrentCarDetail(car)"
-                  routerLink="/cars/cardetails/{{ car.carId }}"
-                >
-                  Detail
-                </button> -->
-              <!-- </div>
-              <small class="text-muted"
-                >Min Credit Score: {{ car.minCreditScore }} <br />
-                Rented:
-              </small>
-            </div> -->
-          <!-- </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <div class="mb-3">
-  <label for="filterText" class="form-label">Search</label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filter-text" placeholder="Arama ifadesi giriniz..">
-</div>
-<div *ngIf="filterText.length>2" class="alert alert-success">
-  {{filterText}} aradınız
-</div>
-<div class="card" style="width: 22rem; height: 22rem;" *ngFor="let car of cars | filterPipe:filterText">
-  
-  <img  src="" class="card-img-top" alt="...">
-  <div class="card-body">
-    
-    <p class="card-text" style="font-size: 30px">{{car.carName}} {{car.description}}</p>
-    <button type="button" class="btn btn-sm btn-primary"
-           (click)="SetCurrentCarDetail(car)"
-           routerLink="/cars/cardetails/{{ car.carId }}" style="font-size: 20px"
-           >Detail</button>
-          </div>
-  </div> -->
-
-
-  <!-- <div>
-    <div class="row my-3">
-      <div class="col md-3">
-  <select  class="form-select"  [(ngModel)]="brandFilter">
-    <option selected>Marka Seçiniz</option>
-    <option value="brand.brandId" *ngFor="let brand of brands">{{brand.brandname}}</option>
-  </select></div>
-  <div class="col md-3">
-  <select  class="form-select" >
-    <option selected>Renk Seçiniz</option>
-    <option value="color.colorId" *ngFor="let color of colors">{{color.colorName}}</option>
-  </select>
-  </div>
-  <div class="col-lg">
-  <div class="d-grid">
-  <button class="btn btn-success" type="button">Filtrele</button>
-  </div>
-  </div> -->
+  <div class="col-md-9">
   <div class="mb-3">
     <label for="filterText" class="form-label">Search</label>
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filter-text" placeholder="Arama ifadesi giriniz..">
@@ -195,9 +84,54 @@ routerLink="cars/cardetails/{{car.carId}}" *ngFor="let car of cars |filterPipe:f
       <td><button type="button" class="btn btn-sm btn-primary"
         (click)="SetCurrentCarDetail(car)"
         routerLink="/cars/cardetails/{{ car.carId }}" style="font-size: 20px"
-        >Detail</button></td>
+        >Detail</button></td> -->
       <!-- <td><button (click)="addToCart(car)" type="button" class="btn btn-primary">Sepete Ekle</button></td> -->
-    </tr>
+    <!-- </tr>
   </tbody>
   </table>
-</div> 
+</div>
+ </div>
+</div> -->
+
+<!-- <tr *ngFor="let car of carDetails">
+  <div  *ngFor="let carImage of carImages" class="card" style="width: fullwidth;">
+    <img src="{{imageURL}}{{carImage.imagePath}}" class="card-img-top" alt="...">
+    <div class="card-body" >
+      <h5 class="card-title" style="font-size: 30px">{{car.brandName}} </h5>
+      <p class="card-text" style="font-size: 30px">RentalCars ayrıcalığı ile kiralayın!</p>
+      <div class="card-body">
+          <div class="row">
+              <div class="col-sm-2">
+                  <h4 class="card-title " style="text-align: center;">Marka</h4>
+                  <p class="card-text"  style="text-align: center; font-size: 18px" >{{car.brandName}} </p>
+              </div>
+              <div class="col-sm-2">
+                  <h4 class="card-title" style="text-align: center;">Model</h4>
+                  <p class="card-text"  style="text-align: center; font-size: 18px" > {{car.description}}</p>
+              </div>
+              <div class="col-sm-2">
+                  <h4 class="card-title" style="text-align: center;">Araç Rengi</h4>
+                  <p class="card-text"  style="text-align: center; font-size: 18px" > {{car.colorName}}</p>
+              </div>
+              <div class="col-sm-2">
+                  <h4 class="card-title" style="text-align: center;">Model Yılı</h4>
+                  <p class="card-text"  style="text-align: center; font-size: 18px" >{{car.modelYear}}</p>
+              </div>
+              <div class="col-sm-2">
+                  <h4 class="card-title " style="text-align: center;">Günlük Fiyat</h4>
+                  <p class="card-text"  style="text-align: center; font-size: 18px" >{{car.dailyPrice |currency:"₺"}} </p>
+              </div>
+              <div class="col-sm-2">
+                <h4 class="card-title " style="text-align: center;">KDV'li Fiyat </h4>
+                <p class="card-text"  style="text-align: center; font-size: 18px" >{{car.dailyPrice |vatAdded:18|currency:"₺"}} </p>
+              </div>
+          </div>
+    </div>
+  </div>
+  
+  </div>
+  </tr> -->
+
+
+
+  

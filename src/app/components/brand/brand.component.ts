@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
+import { CarDetail } from 'src/app/models/carDetail';
 import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
@@ -9,24 +10,26 @@ import { BrandService } from 'src/app/services/brand.service';
   styleUrls: ['./brand.component.css']
 })
 export class BrandComponent implements OnInit {
-brands:Brand[]=[]
-currentBrand:Brand;
+@Input() brand:Brand[] =[]
+currentBrand:CarDetail;
+carDetails: CarDetail[]=[];
   constructor(private brandService:BrandService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
+     this.Details();
     this.getBrands();
   }
   getBrands() {
     this.brandService.getBrands().subscribe(response=>{
-      this.brands=response.data;
+      this.brand=response.data;
     })
    }
 
-   setCurrentBrand(brand: Brand) {
+   setCurrentBrand(brand: CarDetail) {
      this.currentBrand=brand;
    }
 
-   getCurrentBrandClass(brand: Brand) {
+   getCurrentBrandClass(brand: CarDetail) {
      if (brand==this.currentBrand){
        return "list-group-item active"
      }else {
@@ -41,6 +44,10 @@ currentBrand:Brand;
        return "list-group-item"
      }
    }
-
+   Details() {
+    this.brandService.carsDetails().subscribe(response=>{
+      this.carDetails=response.data
+    })
+  }
    
 }

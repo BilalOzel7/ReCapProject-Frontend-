@@ -1,6 +1,45 @@
+<div  class="row">
+  
+    <div
+      id="carouselExampleControls"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div
+          *ngFor="let carImage of carImages; let i = index"
+          class="carousel-item {{ i == 0 ? 'active' : null }}"
+        >
+          <img [src]="imageURL + carImage.imagePath" class="d-block w-100" alt="..." />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+   
+    
+
+      
+
 <tr *ngFor="let car of carDetails">
   <div  *ngFor="let carImage of carImages" class="card" style="width: fullwidth;">
-    <img src="{{imageURL}}{{carImage.imagePath}}" class="card-img-top" alt="...">
+    <!-- <img src="{{imageURL}}{{carImage.imagePath}}" class="card-img-top" alt="..."> -->
     <div class="card-body" >
       <h5 class="card-title" style="font-size: 30px">{{car.brandName}} </h5>
       <p class="card-text" style="font-size: 30px">RentalCars ayrıcalığı ile kiralayın!</p>
@@ -38,9 +77,10 @@
       class="btn btn-success" type="button">Sepete Ekle</button>
      
     <button  
-    class="btn btn-primary" type="button"  href="#" (click)="addRentals(rentals)" routerlink="/rentals/add">Kirala</button>
+    class="btn btn-primary" type="button"  (click)="Rentals()" >Kirala</button>
   </div>
   </div>
+  
   </tr>
 
 

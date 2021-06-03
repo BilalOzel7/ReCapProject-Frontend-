@@ -1,3 +1,4 @@
+import { Brand } from "./brand";
 import { CarImage } from "./carImage";
 
 export interface CarDetail{
@@ -11,5 +12,6 @@ export interface CarDetail{
     dailyPrice:number;
     description:string;
     carImage:CarImage[];
+    brand:Brand
     
 }

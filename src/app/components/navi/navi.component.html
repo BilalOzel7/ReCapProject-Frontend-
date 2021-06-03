@@ -1,28 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="font-size: 30px">RentalCars</a>
+    <a style="background-color: rgb(29, 135, 197);font-size: 24px"
+    class="navbar-brand"
+    class="btn btn-dark">MBÖ RentalCars</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link " [routerLink]="['home']" routerLinkActive="router-link-active" style="font-size: 20px">Home</a>
         </li>
         <app-cart-summary>
           
         </app-cart-summary>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['cars']" routerLinkActive="router-link-active" >Araçlarımız</a>
+          <a class="nav-link" [routerLink]="['cars']" routerLinkActive="router-link-active" style="font-size: 20px" >Araçlarımız</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['cars/add']" routerLinkActive="router-link-active" style="font-size: 20px">Araç Ekle</a>
+        </li>
+        
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <li class="nav-item">
+          <a class="nav-link" class="navbar-brand"
+          class="btn btn-dark" [routerLink]="['register']" routerLinkActive="router-link-active" 
+          style="background-color: rgb(89, 178, 230);font-size: 24px" >Kayıt Ol</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" class="navbar-brand"
+          class="btn btn-dark" [routerLink]="['login']" routerLinkActive="router-link-active" 
+          style="background-color: rgb(89, 178, 230);font-size: 24px" >Giriş</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" class="navbar-brand"
+          class="btn btn-dark" [routerLink]="['home']" routerLinkActive="router-link-active" 
+          style="background-color: rgb(89, 178, 230);font-size: 24px" >Çıkış Yap</a>
+        </li>
       </form>
     </div>
   </div>
-</nav>
+</nav> 

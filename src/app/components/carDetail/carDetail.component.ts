@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarDetail } from 'src/app/models/carDetail';
@@ -19,18 +19,20 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class CarDetailComponent implements OnInit {
   cars: Car[] = [];
+  carImage:CarImage
   carId: number;
   carDetails: CarDetail[]
   rentals:Rental;
   carImages: CarImage[] = [];
+  currentImage: CarImage;
   imageURL: string = "https://localhost:44303"
   constructor(private carService: CarService, private activatedRoute: ActivatedRoute, private carImageService: CarImageService, private toastrService:ToastrService
-    , private cartService:CartService,private carDetailService:CarDetailService,private rentalService:RentalService) { }
+    , private cartService:CartService,private carDetailService:CarDetailService,private rentalService:RentalService,
+    private router:Router) { }
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
       this.getCarDetailsById(params['carId']);
       this.getByCarId(params['carId'])
-      this.addRentals(params['Rental'])
     })
   }
   getByCarId(carId: number) {
@@ -65,8 +67,15 @@ export class CarDetailComponent implements OnInit {
     this.toastrService.success("Sepete eklendi.",car.carName)
     this.cartService.addToCart(car);
   }
-addRentals(rent:Rental){
-    this.rentalService.addRentals(rent);
+Rentals(){
+    
+    this.router.navigate(['/rentaladd',JSON.stringify(this.carDetails)]);
 }
-
+getSliderClassName(carImage: CarImage) {
+  if (this.currentImage === carImage) {
+    return "carousel-item active"
+  } else {
+    return "carousel-item"
+  }
+}
 }
