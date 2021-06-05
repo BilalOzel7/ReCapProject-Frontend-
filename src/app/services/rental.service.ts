@@ -19,9 +19,9 @@ getRentals():Observable<ListResponseModel<Rental>> {
   return this.httpClient.get<ListResponseModel<Rental>>(newPath);
  }
 
- addRentals(rent:Rental){
+ addRentals(rent:Rental):Observable<ResponseModel>{
   let newPath = this.apiURL + 'rentals/add';
-  return this.httpClient.post(newPath, rent);
+  return this.httpClient.post<ResponseModel>(newPath, rent);
 }
 isRentable(rental:Rental):Observable<ResponseModel>{
   let newPath = this.apiURL + "rentals/isrentable"

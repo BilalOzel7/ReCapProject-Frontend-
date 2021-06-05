@@ -1,4 +1,4 @@
-<div class="content">
+<div class="container">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
@@ -6,10 +6,20 @@
         </div>
         <div class="card-body">
           <form [formGroup]="rentalAddForm">
-            <div class="mb-3">
-             
+            <!-- <div class="mb-3">
+              <label for="carId">Araç Id</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="carId"
+                  formControlName="carId"
+                  placeholder="{{carId}}"
+                  class="form-control"
+                  readonly
+                />
+              </div>
               
-            </div>
+            </div> -->
   
             <div class="mb-3">
               <div class="form-floating mb-3">
@@ -49,7 +59,7 @@
           </form>
         </div>
         <div (click)="add()" class="card-footer">
-          <button class="btn btn-fill btn-success">Kirala</button>
+          <button class="btn btn-fill btn-success" >Kirala</button>
         </div>
       </div>
     </div>
@@ -57,119 +67,4 @@
   
 
 
-<!-- <div class="row">
-  <div class="col-3"></div>
-  <div class="col-6">
 
-      <div class="card">
-          <div class="card-header">
-              <h5 class="title font-weight-bold">Araç kirala </h5>
-          </div>
-
-          <div class="card-body">
-
-              <form [formGroup]="rentalAddForm">
-
-                  <div class="mb-3">
-                      <label for="customerId">Müşteri </label>
-                      <div class="form-group">
-
-                          <select id="customerId" class="form-select" formControlName="customerId">
-              <option [ngValue]="customer.customerId" *ngFor="let customer of customers">{{ customer.firstName }} {{ customer.lastName }}</option>
-            </select>
-
-                      </div>
-                  </div>
-
-                  <div class="mb-3">
-                      <label for="rentDate">Kiralama tarihi</label>
-                      <div class="form-group">
-                          <input type="date" id="rentDate" class="form-control" formControlName="rentDate" min="{{ rentDate | date:'yyyy-MM-dd' }}" />
-                      </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="returnDate">Kiralama tarihi</label>
-                    <div class="form-group">
-                        <input type="date" id="returnDate" class="form-control" formControlName="returnDate" min="{{ returnDate | date:'yyyy-MM-dd' }}" />
-                    </div>
-                </div>
-
-                  <div class="mb-3">
-                      <div class="form-group">
-                          <label for="numberOfDate">Kiralama süresi (gün)</label>
-                          <app-rental-period formControlName="numberOfDate"></app-rental-period>
-                      </div>
-                  </div>
-
-                  <div class="mb-3">
-                      <div class="form-group" id="totalPrice">
-                          <h5> Toplam ücret : {{ totalPrice }} TL </h5>
-                      </div>
-                  </div>
-
-              </form>
-
-          </div> -->
-
-          <!-- <div class="card-footer">
-              <button class="btn btn-fill btn-primary" (click)="addToCart()">Sepete Ekle</button>
-          </div> -->
-      <!-- </div>
-
-  </div>
-  <div class="col-3"></div>
-
-</div> -->
-<!-- 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-4"> -->
-         
-          <!-- <img *ngIf="cars"
-          src="{{imageURL}}{{carImage.imagePath}}"
-            class="card-img-top"
-            alt="{{ car.brandName }} Image"
-            width="50%"
-            height="75%"
-          /> -->
-          <!-- <div class="card-body">
-            <h5 class="card-title">{{ car.brandName | uppercase }}</h5>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Renk: {{ car.colorName }}</li>
-            <li class="list-group-item">Model Yılı: {{ car.modelYear }}</li>
-            <li class="list-group-item">Fiyat: {{ car.dailyPrice |currency: "TRY":"symbol-narrow":"1.2-2" }}</li>
-          </ul>
-        </div> -->
-        <!-- <div class="col-md-8">
-
-            <div *ngIf="car" class="content d-flex justify-content-center">
-              <div class="row justify-content-md-center">
-                  <div class="col-md-12 ">
-                      <div class="p-fluid p-formgrid p-grid ">
-                          <form>
-                              <div class="mb-3">
-                                  <label for="daily-price" class="form-label">Günlük Ücret:</label>
-                            
-                                  <input [value]="car.dailyPrice | currency" disabled="disabled" type="text" class="form-control" id="daily-price" >
-                              </div>
-                              <div id="date" class="mb-3" >
-                                  <label for="rent-date" class="form-label">Başlangıç:</label>
-                                  <input  min="{{minDate}}" (change)="controlEndDate()" [(ngModel)]="startDate" name="startDate" type="date" class="form-control" id="rent-start-date" >
-                              </div>
-                              <div id="date"class="mb-3">
-                                  <label for="return-date" class="form-label">Bitiş:</label>
-                                  <input [disabled]='!startDate' min="{{startDate}}" max="{{maxDate}}" [(ngModel)]="endDate" name="endDate" (change)="setRentable()" type="date" class="form-control" id="rent-end-date" >
-                              </div>
-                          </form>
-                      </div>
-                      <div class="card">
-                        <button [disabled]="!(startDate && endDate)" (click)="addRental()" type="button" class="btn btn-success" data-bs-dismiss="modal">Kirala</button>
-                      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-    </div>
-</div> -->

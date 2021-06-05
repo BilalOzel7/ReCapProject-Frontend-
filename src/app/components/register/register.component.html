@@ -2,7 +2,6 @@
     <main class="form-signin">
         <form [formGroup]="registerForm">
           <h1 class="h3 mb-3 fw-normal">Kayıt ol</h1>
-      
           <div class="form-floating">
             <input formControlName="firstName" type="firstName" class="form-control" id="floatingInput" placeholder="firstName" >
             <label for="floatingInput">Ad</label>
@@ -21,7 +20,6 @@
           </div>
           <p routerLink="/login">Zaten bir hesabın var mı?</p>
           <button (click)="register()" class="w-100 btn btn-lg btn-success" type="submit" routerLink='/login'>Kayıt Ol</button>
-          
         </form>
       </main>
         </body>

@@ -53,54 +53,7 @@ RentalDetails() {
     this.rentalDetails=response.data
   })
 }
-// getRentMinDate() {
-//   this.minDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
-//   return this.minDate;
-// }
 
-// getReturnMinDate() {
-//   if (this.rentDate != undefined) {
-//     let stringToDate = new Date(this.rentDate);
-//     let new_date = new Date();
-//     new_date.setDate(stringToDate.getDate() + 1);
-//     return new_date.toISOString().slice(0, 10);
-//   } else {
-//     return this.rentDate;
-//   }
-// }
-// getReturnMaxDate() {
-//   this.maxDate = this.datePipe.transform(
-//     new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
-//     'yyyy-MM-dd'
-//   );
-//   return this.maxDate;
-// }
-// onChangeEvent(event: any) {
-//   this.minDate = event.target.value;
-//   this.firstDateSelected = true;
-// }
-// createRental() {
-//   let MyRental: Rental = {
-//     carId : this.car.carId,
-//     rentalId: this.rental.rentalId,
-//     customerId : this.customerId,
-//     rentDate : this.rentDate,
-//     returnDate : this.returnDate,
-//   };
-//   if (MyRental.customerId == undefined || MyRental.rentDate == undefined) {
-//     this.toastrService.error("AUGHTUNG!!")
-//   } else{
-//     this.router.navigate(['payments', JSON.stringify(MyRental)]);
-//     this.toastrService.info(
-//       'Ödeme sayfasına yönlendiriliyorsunuz...',
-//       'Ödeme İşlemleri'
-//     );
-//   }
-// }
-// setCustomerId(customerId: string) {
-//   this.customerId = +customerId;
-//   console.log(this.customerId);
-// }
 getCustomer() {
   this.customerService.getCustomers().subscribe((response) => {
     this.customers = response.data;

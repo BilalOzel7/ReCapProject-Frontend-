@@ -1,7 +1,7 @@
 export interface RentalDto{
     rentalId:number;
     carName:string;
-    customerFullName:string;
+    customerName:string;
     rentDate:string;
     returnDate:string;
 }

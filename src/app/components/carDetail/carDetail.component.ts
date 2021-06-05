@@ -25,6 +25,7 @@ export class CarDetailComponent implements OnInit {
   rentals:Rental;
   carImages: CarImage[] = [];
   currentImage: CarImage;
+  carControl=false
   imageURL: string = "https://localhost:44303"
   constructor(private carService: CarService, private activatedRoute: ActivatedRoute, private carImageService: CarImageService, private toastrService:ToastrService
     , private cartService:CartService,private carDetailService:CarDetailService,private rentalService:RentalService,
@@ -67,10 +68,10 @@ export class CarDetailComponent implements OnInit {
     this.toastrService.success("Sepete eklendi.",car.carName)
     this.cartService.addToCart(car);
   }
-Rentals(){
+// Rentals(){
     
-    this.router.navigate(['/rentaladd',JSON.stringify(this.carDetails)]);
-}
+//     this.router.navigate(['/rentaladd',JSON.stringify(this.carDetails)]);
+// }
 getSliderClassName(carImage: CarImage) {
   if (this.currentImage === carImage) {
     return "carousel-item active"

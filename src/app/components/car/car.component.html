@@ -1,6 +1,3 @@
-
-
-
   <div class="container">
   <div class="row">
     <div class="col-md-2">
@@ -30,7 +27,7 @@
                   {{car.carName}}
                 </div>
                 <div class="card-text">
-                 Benzinli ve otomatik vites Honda Civic Sedan    
+                 {{car.description}}   
                 </div>
                 <div class="card-text">
                   {{car.dailyPrice}} TL
@@ -40,97 +37,12 @@
                 routerLink="/cars/cardetails/{{ car.carId }}">Detaylar</a></div>
             </div>
         </div>
-        
-           <!-- <div >
-            <a  href="#" class="card-button" (click)="SetCurrentCarDetail(car)"
-            routerLink="/cars/cardetails/{{ car.carId }}">Detaylar</a></div> -->
-        
-
     </div>  
   </div>
 </div>
-</div></div>
-  <!-- <div class="row">
-  <div class="col-md-3">
-    <app-brand></app-brand>
-  </div>
-  <div class="col-md-9">
-  <div class="mb-3">
-    <label for="filterText" class="form-label">Search</label>
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filter-text" placeholder="Arama ifadesi giriniz..">
-  </div>
-  <div *ngIf="filterText.length>2" class="alert alert-success">
-    {{filterText}} aradınız
-  </div>
- <div>
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>CarName</th>
-        <th>BrandName</th>
-        <th>ModelYear</th>
-        <th>DailyPrice</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr (click)="SetCurrentCarDetail(car)" 
-    routerLink="/cars/cardetails/{{car.carId}}" 
-    *ngFor="let car of cars | filterPipe:filterText">
-      <td>{{car.carName}}</td>
-      <td>{{car.description}}</td>
-      <td>{{car.modelYear}}</td>
-      <td>{{car.dailyPrice}}</td>
-      <td><button type="button" class="btn btn-sm btn-primary"
-        (click)="SetCurrentCarDetail(car)"
-        routerLink="/cars/cardetails/{{ car.carId }}" style="font-size: 20px"
-        >Detail</button></td> -->
-      <!-- <td><button (click)="addToCart(car)" type="button" class="btn btn-primary">Sepete Ekle</button></td> -->
-    <!-- </tr>
-  </tbody>
-  </table>
 </div>
- </div>
-</div> -->
-
-<!-- <tr *ngFor="let car of carDetails">
-  <div  *ngFor="let carImage of carImages" class="card" style="width: fullwidth;">
-    <img src="{{imageURL}}{{carImage.imagePath}}" class="card-img-top" alt="...">
-    <div class="card-body" >
-      <h5 class="card-title" style="font-size: 30px">{{car.brandName}} </h5>
-      <p class="card-text" style="font-size: 30px">RentalCars ayrıcalığı ile kiralayın!</p>
-      <div class="card-body">
-          <div class="row">
-              <div class="col-sm-2">
-                  <h4 class="card-title " style="text-align: center;">Marka</h4>
-                  <p class="card-text"  style="text-align: center; font-size: 18px" >{{car.brandName}} </p>
-              </div>
-              <div class="col-sm-2">
-                  <h4 class="card-title" style="text-align: center;">Model</h4>
-                  <p class="card-text"  style="text-align: center; font-size: 18px" > {{car.description}}</p>
-              </div>
-              <div class="col-sm-2">
-                  <h4 class="card-title" style="text-align: center;">Araç Rengi</h4>
-                  <p class="card-text"  style="text-align: center; font-size: 18px" > {{car.colorName}}</p>
-              </div>
-              <div class="col-sm-2">
-                  <h4 class="card-title" style="text-align: center;">Model Yılı</h4>
-                  <p class="card-text"  style="text-align: center; font-size: 18px" >{{car.modelYear}}</p>
-              </div>
-              <div class="col-sm-2">
-                  <h4 class="card-title " style="text-align: center;">Günlük Fiyat</h4>
-                  <p class="card-text"  style="text-align: center; font-size: 18px" >{{car.dailyPrice |currency:"₺"}} </p>
-              </div>
-              <div class="col-sm-2">
-                <h4 class="card-title " style="text-align: center;">KDV'li Fiyat </h4>
-                <p class="card-text"  style="text-align: center; font-size: 18px" >{{car.dailyPrice |vatAdded:18|currency:"₺"}} </p>
-              </div>
-          </div>
-    </div>
-  </div>
+</div>
   
-  </div>
-  </tr> -->
 
 
 

@@ -24,8 +24,8 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"home",component:HomeComponent},
   {path:"register",component:RegisterComponent},
-  {path:"rentaladd/:car",component:RentalAddComponent},
-  {path:"payment",component:PaymentComponent},
+  {path:"rentaladd/:carId/:dailyPrice",component:RentalAddComponent},
+  {path:"payment/:rental",component:PaymentComponent},
 ];
 
 @NgModule({

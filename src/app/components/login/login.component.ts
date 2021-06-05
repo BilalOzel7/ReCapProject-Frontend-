@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators,FormBuilder} from "@angular/forms"
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private authService: AuthService,private toastrService: ToastrService) { }
+  constructor(private formBuilder: FormBuilder,private authService: AuthService,private toastrService: ToastrService,private router:Router) { }
   loginForm:FormGroup;
   ngOnInit(): void {
     this.createLoginForm();
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(loginModel).toPromise().then(response=>{
       this.toastrService.info(response.message)
       localStorage.setItem("token",response.data.token)
+      this.router.navigate(['/cars']);
     }).catch(responseError=>{
       console.log({error: responseError.error});
       this.toastrService.error(responseError.error)
@@ -36,22 +38,3 @@ export class LoginComponent implements OnInit {
   }
 }
 
-// this.carService.add(carModel).toPromise().then(response => {
-//   this.toastrService.success(response.message, 'Başarılı');
-// }).catch(response => {
-//   console.log({error: response.error});
-//   if (response.error.Errors.length > 0) 
-//     for (
-//       let index = 0;
-//       index < response.error.Errors.length;
-//       index++
-//     ) {
-//       this.toastrService.error(
-//         response.error.Errors[index].ErrorMessage,
-//         'Doğrulama Hatası'
-//       );
-//     }
-//   });
-// }
-
-// }

@@ -13,5 +13,6 @@ export interface CarDetail{
     description:string;
     carImage:CarImage[];
     brand:Brand
+    customerId:number;
     
 }

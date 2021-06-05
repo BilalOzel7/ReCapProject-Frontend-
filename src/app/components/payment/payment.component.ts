@@ -18,7 +18,7 @@ export class PaymentComponent implements OnInit {
   expirationDate:string;
   cardCvv:string;
   moneyInTheCard:number;
-  totalPrice:number;
+  totalRentPrice:number;
   carId:number;
   constructor(private paymentService:PaymentService,private activatedRoute:ActivatedRoute, private router :Router,
     private toastrService:ToastrService,
@@ -30,17 +30,20 @@ export class PaymentComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       if(params['rental']){
         this.rental = JSON.parse(params['rental']);
+        console.log(this.rental)
         this.carId=Number(this.rental.carId);
-        this.totalPrice=Number(this.rental.totalRentPrice);
-        
-        
-        
+       this.totalRentPrice=Number(this.rental.totalRentPrice);
       }
     });
   }
   rentACar(){
-    this.rentalService.addRentals(this.rental).subscribe(response=>{
-   this.toastrService.success("Başarılı","Kiralama İşlemi Tamamlandı")})
+    this.rentalService.addRentals(this.rental).toPromise().then((response)=>{
+      if (response.success==true){
+        this.toastrService.success("Başarılı","Kiralama İşlemi Tamamlandı")}
+        // else{
+        //   this.toastrService.error("Hata","Kiralama İşlemi Tamamlanamadı")}
+      })
+  //  this.toastrService.info("Başarılı","Kiralama İşlemi Tamamlandı")
    this.router.navigate(['/cars']);
 }
 }

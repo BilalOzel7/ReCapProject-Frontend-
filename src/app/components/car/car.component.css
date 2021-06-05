@@ -13,11 +13,19 @@ a {
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.card-sl:hover{
+    
+}
 
 .card-image img {
     max-height: 100%;
     max-width: 100%;
     border-radius: 8px 8px 0px 0;
+}
+.card-image img:hover {
+    transform:scale(1.5);
+    transition: all 0.3s ease;
+    border-radius: 50%;
 }
 
 .card-action {
@@ -32,9 +40,11 @@ a {
     padding: 15px;
     font-size: 15px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .card-action:hover {
+    
     color: #fff;
     background: #E26D5C;
     -webkit-animation: pulse 1.5s infinite;

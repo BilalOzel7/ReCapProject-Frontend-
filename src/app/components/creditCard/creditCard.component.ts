@@ -48,22 +48,5 @@ export class CreditCardComponent implements OnInit {
     });
 
   }
-  // async rent(){
-  //   if(this.creditCardForm.valid){
-  //     let payment:Payment = Object.assign({},this.creditCardForm.value)
-  //     this.cardExist = await this.isCardExist(payment)
-  //     if(this.cardExist){
-  //       let newPayment = await((this.getFakeCardByCardNumber(this.cardNumber))) 
-  //       let wannaSave = await this.isSaved(newPayment)
-  //       if(!wannaSave){
-  //         this.rentACar(newPayment)
-  //       }
-  //     }else{
-  //       this.toastrService.error("Hesap bilgileriniz onaylanmadı","Hata")
-  //     }
-  //   }else{
-  //     this.toastrService.error("Formu doldurmanız gerekli","Hata")
-  //   }
-    
-  // }
+  
 }
