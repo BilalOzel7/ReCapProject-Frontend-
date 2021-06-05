@@ -34,6 +34,7 @@ export class PaymentComponent implements OnInit {
         this.carId=Number(this.rental.carId);
        this.totalRentPrice=Number(this.rental.totalRentPrice);
       }
+      
     });
   }
   rentACar(){
