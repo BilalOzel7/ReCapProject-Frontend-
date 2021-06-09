@@ -54,9 +54,6 @@ import { PaymentComponent } from './components/payment/payment.component';
     RegisterComponent,
     RentalAddComponent,
     PaymentComponent,
-    
-    
-   
   ],
   imports: [
     BrowserModule,
@@ -77,4 +74,4 @@ import { PaymentComponent } from './components/payment/payment.component';
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
