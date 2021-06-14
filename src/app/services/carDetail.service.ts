@@ -20,5 +20,9 @@ getCarDetailsById(id:number):Observable<ListResponseModel<CarDetail>>{
   return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
   
  }
+ getCarsByBrand(brandId:number):Observable<ListResponseModel<CarDetail>> {
+  let newPath=this.apiURL + "cars/getbybrand?brandId="+brandId
+ return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
+}
 
 }

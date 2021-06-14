@@ -1,10 +1,18 @@
 
 <h3>Markalar</h3>
+
 <ul class="list-group">
- 
-  <li [class]="getCurrentBrandClass(brand)" *ngFor="let brand of carDetails" 
+  
+ <div  class="mb-2">
+  
+    <input type="text" [(ngModel)]="filterBrandText" class="form-control"  placeholder="Arama ifadesi giriniz..">
+  </div>
+  <div *ngIf="filterBrandText.length>2" class="alert alert-success">
+    {{filterBrandText}} aradınız
+  </div>
+  <li [class]="getCurrentBrandClass(brand)" *ngFor="let brand of brands | filterBrand:filterBrandText" 
     (click)="setCurrentBrand(brand)"
-   routerLink="cars/brand/{{brand.brandId}}"> 
+   routerLink="/cars/brand/{{brand.brandId}}"> 
   {{brand.brandName}}</li>
 </ul>
  

@@ -1,28 +1,27 @@
   <div class="container">
   <div class="row">
     <div class="col-md-2">
-      <app-brand [brand]="brand"></app-brand>
+      <app-brand [brands]="brands"></app-brand>
     </div>
     
 <div class="col-md-10">
   <div  class="mb-4">
     <label for="filterText" class="form-label" style="text-align: center; font-size: 24px">Araç Ara</label>
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filter-text" placeholder="Arama ifadesi giriniz..">
+    <input type="text" [(ngModel)]="filterText" class="form-control"  placeholder="Arama ifadesi giriniz..">
   </div>
-  <div class="row row-cols-1 row-cols-md-3 g-2">
   <div *ngIf="filterText.length>2" class="alert alert-success">
     {{filterText}} aradınız
   </div>
+  <div class="row row-cols-1 row-cols-md-3 g-2">
+  
   <div class="col" style="margin-top:50px;" *ngFor="let car of carDetails |filterPipe:filterText">
     <div class="row"> 
         <div class="col-md-9" >
             <div class="card-sl">
                 <div class="card-image" >
                     <img
-                        src="{{imageURL}}{{car.carImage[0].imagePath}}" />
+                        src="{{imageURL}}{{car.carImage[0].imagePath}}"  />
                 </div>
-
-                
                 <div class="card-heading">
                   {{car.carName}}
                 </div>

@@ -13,6 +13,7 @@ import { Color } from 'src/app/models/color';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CartService } from 'src/app/services/cart.service';
 import { CreditCardService } from 'src/app/services/creditCard.service';
+import { CarDetailService } from 'src/app/services/carDetail.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { CreditCardService } from 'src/app/services/creditCard.service';
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
-brand:Brand[]=[]
+
 cars: Car[] = [];
 currentCar:Car;
 filterText="";
@@ -36,7 +37,7 @@ colors:Color[]=[];
     private activatedRoute: ActivatedRoute,
     private toastrService:ToastrService,private carImagesService : CarImageService,
      private brandService:BrandService,private colorService:ColorService,private cartService:CartService,
-     private creditCardService:CreditCardService,
+     private creditCardService:CreditCardService,private carDetailService:CarDetailService
      ) { } 
 
   ngOnInit(): void {
@@ -66,8 +67,8 @@ colors:Color[]=[];
 
   getCarsByBrand(brandId:number) {
     this.carService.getCarsByBrand(brandId).subscribe(response=>{
-      this.cars=response.data
-     
+      this.carDetails=response.data
+      console.log(response)
     })
    }
   SetCurrentCarDetail(car:Car){
